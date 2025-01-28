@@ -1,5 +1,4 @@
 package BMS;
-import java.sql.SQLOutput;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.*;
@@ -7,9 +6,6 @@ import java.util.*;
 public class UserActions {//USeractions class for the user operations
 
     public static User userlogin(Scanner sc, String name) {//method for userlogin if user is already exist.
-        int attempt = 0;//for iterating
-        while (attempt < 3) {//untill 3 ttempts
-            attempt++;//incrementing the iterative var.
             for (User a : BMS.getUserlist()) {//loop for getting the each user from th user list to a.
                 if (a.getName().equals(name)) {//checking if the a object's name is equal to the name .
                     //getting the pass
@@ -24,9 +20,6 @@ public class UserActions {//USeractions class for the user operations
                     }
                 }
             }
-        }
-        //attemps completing case(attempt ==3)
-        System.out.println("attempt finished ");
         return null;//returns null.
     }
 

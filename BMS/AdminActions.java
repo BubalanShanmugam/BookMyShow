@@ -12,8 +12,6 @@ public class AdminActions {//AdminActions class for admin's actions.
         //getting the admin name
         System.out.println("Enter Admin Name:");
         String name = sc.nextLine();
-        int attempt = 0;//attempt var for looping.
-        while (attempt < 3) {//for 3 times
             for (Admin a : BMS.getAdminlist()) {//getting the admin object from adminlist by iterating.
                 if (a.getName().equals(name)) {//if admin's name is equals entered name !
                     //getting the pass.
@@ -29,9 +27,7 @@ public class AdminActions {//AdminActions class for admin's actions.
                 } else {//if admin is not available.
                     return new Admin(null, 0);
                 }
-                attempt++;//incrementing the attempt
             }
-        }
         System.out.println("Attempt Completed...");
         return null;//if attempt is exceeded return null.
     }
