@@ -268,6 +268,7 @@ public class AdminActions {//AdminActions class for admin's actions.
                 System.out.println("-> Screen   :" + movies.getScreen().getScreenname());//printing the screen name
                 System.out.println("-> Location :" + movies.getLoc());//printing the location
                 System.out.println("-> Date     :" + movies.getStartDate().format((BMS.getDateFormatter())));//printing the Date using dateformatter
+                System.out.println("-> Duration :" + movies.getShow().getDuration());
                 System.out.println("-> Starttime:" + movies.getShow().getStartTime().format((BMS.getTimeFormatter())));//printing the starttime using timeformatter
                 System.out.println("-> End Time :" + movies.getShow().getEndTime().format((BMS.getTimeFormatter())));//printing the endtime using timeformatter
                 System.out.println("===========================");

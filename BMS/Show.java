@@ -37,6 +37,8 @@ public class Show {//Show pojo class
         return endTime;
     }
 
+    public int getDuration() {return duration;}
+
     public LocalTime getStartTime() {
         return startTime;
     }
@@ -70,11 +72,6 @@ public class Show {//Show pojo class
          Show show = (Show) object;//type caasting the object to Show type.
          return Objects.equals(this.startTime, show.startTime) && Objects.equals(this.endTime, show.endTime);//returns true if the both are ture
     }
-    public int hashcode()
-    {
-        return Objects.hash(startTime, endTime, date);
-    }
-
 
     @Override
     public String toString(){
