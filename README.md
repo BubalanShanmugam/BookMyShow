@@ -22,6 +22,14 @@ BookMyShow is a terminal-based movie ticket booking application built in Java. T
 ## Installation
 
 1. Clone the repository:
-
    ```bash
    git clone https://github.com/BubalanShanmugam/BookMyShow.git
+
+2. Compile the application:
+   ```bash
+   javac Application.java
+
+3.Run the application:
+   ```bash
+   java Application
+
