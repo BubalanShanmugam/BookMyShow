@@ -9,18 +9,17 @@ public class Screen {//Screen pojo class
     private  int availableseat  ;//for the avialable no of seats
     private int nofseats;//no of seats
     private HashMap<Character , ArrayList<String>> seatingarrange;//seating arrangement HAshmap
-    private HashSet<Show> shows = new HashSet<>();//Hashmap of Show type to store the Show object.
+    private HashSet<Show> shows = new HashSet<>();//Hashset of Show type to store the Show object.
     private String grid ;//The seat grid value for the screen
 
     //constructor to the Screen class to instialize the screenname,noofseats,seatarrangement and grid.
-    public Screen(String screenname,int nofseats,HashMap<Character,ArrayList<String>> seatingarrange, String grid){
-        this.screenname=screenname;
-        this.nofseats=nofseats;
-        this.availableseat=nofseats;
-        this.seatingarrange= seatingarrange;
-        this.grid=grid;
+    public Screen(String screenname,int nofseats,HashMap<Character,ArrayList<String>> seatingarrange, String grid) {
+        this.screenname = screenname;
+        this.nofseats = nofseats;
+        this.availableseat = nofseats;
+        this.seatingarrange = seatingarrange;
+        this.grid = grid;
     }
-    public Screen(){}
 
 
     //gettors for the instialize the screenname,noofseats,seatarrangement ,shows ,  availableseats and grid.
