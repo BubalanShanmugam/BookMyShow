@@ -20,10 +20,10 @@ public class BMSActions {//Bookmyshoe Action class
                 case 1:
                     Admin admin = AdminActions.adminlogin(sc); //creating instnce for th Admin class.
                     if (admin == null) { //to check whether the admin object 'admin' is null or not
-                        System.out.println("Invalid admin.please enter valid admin details.");
+                        System.out.println("please enter valid admin details.");
                     } else if (admin.getName() == null) //it checks whether the 'admin' obj containing admin username is == admin users list
                     {
-                        System.out.println("Invalid adminname...");
+                        System.out.println("Wrong password..Please try again later.");
                     } else {//admin is available
                         adminMenu();// it calls the adminactions method, if admin username and password get matched
                     }
@@ -40,7 +40,7 @@ public class BMSActions {//Bookmyshoe Action class
                             System.out.println("Do you want to sign up ?[1 / 0]");//to ask for register
                             int ch = Integer.parseInt(sc.nextLine());// yes or no for register
                             if (ch == 1) {//if yes to register
-                                UserActions.register(sc);//calling the register method.
+                                UserActions.register(sc,name);//calling the register method.
                             } else {//if no to register
                                 break;
                             }
@@ -109,14 +109,16 @@ public class BMSActions {//Bookmyshoe Action class
             System.out.println(" 1. Display Movie \n 2. Change Location /Date \n 3. View Ticket \n 4. Exit");
             int userChoice = Integer.parseInt(sc.nextLine());
             switch (userChoice) {//swith case for perform the adminopertions
-                case 1:
-                    // case for calling the method to view AvailableMovies
-                    UserActions.availableMovies(user);
-                    break ;
                 case 2:
                     // case for calling the method to Chane location or Date.
-                    UserActions.changeLocationorDate(user, LocalDate.now());
+                    LocalDate date = UserActions.changeLocationorDate(user, LocalDate.now());
+                    UserActions.availableMovies(user,date);
                     break ;
+                case 1:
+                    // case for calling the method to view AvailableMovies
+                    UserActions.availableMovies(user,LocalDate.now());
+                    break ;
+
 
                 case 3:
                     // case for calling the method to view bookedTickets.

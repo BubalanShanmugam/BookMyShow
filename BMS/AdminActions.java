@@ -22,14 +22,11 @@ public class AdminActions {//AdminActions class for admin's actions.
                         System.out.println("Login successfull");
                         return a;//returns the logined admin object.
                     } else {//if pass is wrong
-                        System.out.println("Wrong pass");
+                        return new Admin(null, 0);
                     }
-                } else {//if admin is not available.
-                    return new Admin(null, 0);
                 }
             }
-        System.out.println("Attempt Completed...");
-        return null;//if attempt is exceeded return null.
+        return null;//if no admin available
     }
 
     public static void addTheatre(Scanner sc) {//method for definition for ddTheatre.
@@ -48,15 +45,12 @@ public class AdminActions {//AdminActions class for admin's actions.
         //getting the no. of screens
         System.out.print("Enter the no.of screens:");
         int numofscr = Integer.parseInt(sc.nextLine());
-        int noofscr = numofscr;
         //Hashmap for the Screen wit screenname key, screeen object value.
         HashMap<String, Screen> screenHashMap = new HashMap<>();
         x:
-        while (noofscr >= 0) {//untill no.of screens become 0
-            noofscr--;//reducing the no.of screen
+        while (numofscr >= 0) {//untill no.of screens become 0
             //getting the name, no of seats and scrgrid
-            int att = 0;
-            while (att < 3) {
+            while (true) {
                 System.out.print("Enter the name of the screen:");
                 String scrname = sc.nextLine();
                 if (!screenHashMap.containsKey(scrname)) {
@@ -70,19 +64,14 @@ public class AdminActions {//AdminActions class for admin's actions.
                     if (grid == null) {//if grid is null
                         continue;//continue from getting screen name
                     }
-                    att++;//incrementing attempt
                     Screen screen = (new Screen(scrname, noofseats, grid, scrgrid));//creationg new instance for the Screen .
                     screenHashMap.put(scrname, screen);//adding that new instance in the ScreenHashmap with the screenname key.
-                    noofscr--;//decrementing the no of screens
-                    if (att == numofscr) {//if all the screens sre created
+                    numofscr--;//decrementing the no of screens
+                    if (0 == numofscr) {//if all the screens sre created
                         break x;//breaks the loop
                     }
                 } else {//if the screen is already exist
                     System.out.println("Screen is already exist !");
-                    noofscr--;//decrementing the no .ofscreens
-                    if (numofscr==0) {//if no. of screen is zero
-                        break x;//breaks the loop from getting the screen details
-                    }
                 }
             }
         }
@@ -116,6 +105,9 @@ public class AdminActions {//AdminActions class for admin's actions.
         Scanner sc = new Scanner(System.in);//Scannner class
         LocalDate date = null;//date var
         int duration =0;//duration var initialization
+        int price;//var for the ticket price
+        Screen screen ;
+        Theatre theatre;
         x:while (true) {//loop for itertiing.
 
             //getting the movie name and location.
@@ -126,8 +118,8 @@ public class AdminActions {//AdminActions class for admin's actions.
 
 
             boolean movieavailable = false;//boolean var for condition purpose
-            for (Theatre theatre : BMS.getTheatrenametheatreobj().values()) {//getting the value() of the Theatrenameandobj hashmap iteratively.
-                if (theatre.getLocation().equalsIgnoreCase(loc)) {//checking the location is equal to the theatre's location.
+            for (Theatre theatr : BMS.getTheatrenametheatreobj().values()) {//getting the value() of the Theatrenameandobj hashmap iteratively.
+                if (theatr.getLocation().equalsIgnoreCase(loc)) {//checking the location is equal to the theatre's location.
                     movieavailable = true;
                     break;
                 }
@@ -138,9 +130,7 @@ public class AdminActions {//AdminActions class for admin's actions.
             }
 
             //getting the date of the movie.
-            int i = 0;
-            while (i < 3) {//loopf or 3 times
-                i++;
+            while (true) {//loop
                 System.out.println("Enter the date of the Movie(dd:mm:yy)");
                 try {//getting the date for the movie
                     date = LocalDate.parse(sc.nextLine(), BMS.getDateFormatter());
@@ -148,58 +138,60 @@ public class AdminActions {//AdminActions class for admin's actions.
                 } catch (Exception e) {//if date format is not available
                     System.out.println("Invalid date format !");
                 }
-                if (i == 3) {//if iteration is 3 rdtime gets out
-                    System.out.println("please try again !");
-                    continue x;
-                }
             }
 
             //getting the ticket price of the movie.
-            System.out.println("Enter the price of the single ticket :");
-            int price;
-            try {
-                //gettingt he price for the ticket
-                price = Integer.parseInt(sc.nextLine());
-            } catch (NumberFormatException e) {//catch block for the wrong input formation
-                System.out.println("Invalid ticket price!");
-                continue;//continue with movie name getting
-            }
-
-
-            System.out.println("Available Theatres :");
-            for (Theatre theatre : BMS.getTheatrenametheatreobj().values()) {//iterating the theatre hashmap to get the theatres list
-                if (theatre.getLocation().equalsIgnoreCase(loc)) {//if the theatre is loc of movie
-                    System.out.println(theatre.getName());//printing the theatre name
+            while (true) {
+                System.out.println("Enter the price of the single ticket :");
+                try {//gettingt he price for the ticket
+                    price = Integer.parseInt(sc.nextLine());
+                    break;
+                } catch (NumberFormatException e) {//catch block for the wrong input formation
+                    System.out.println("Invalid ticket price!");
                 }
             }
-            //getting the Theatrename of the movie.
-            System.out.println("Enter the Theatre name :");
-            String theatrename = sc.nextLine();
-            //getting the theatre object of theatre name key
-            Theatre theatre = BMS.getTheatrenametheatreobj().get(theatrename);
-            if (theatre == null || !(theatre.getLocation().equalsIgnoreCase(loc))) {//checking if the theatre is null or not in the movie's loc
-                System.out.println("Invalid theatre name ");
-                continue;
+
+            System.out.println("Available Theatres :");
+            for (Theatre theatres : BMS.getTheatrenametheatreobj().values()) {//iterating the theatre hashmap to get the theatres list
+                if (theatres.getLocation().equalsIgnoreCase(loc)) {//if the theatre is loc of movie
+                    System.out.println(theatres.getName());//printing the theatre name
+                }
             }
+
+
+            //getting the Theatrename of the movie.
+            while (true) {
+                System.out.println("Enter the Theatre name :");
+                String theatrename = sc.nextLine();
+                //getting the theatre object of theatre name key
+                theatre = BMS.getTheatrenametheatreobj().get(theatrename);
+                if (theatre == null || !(theatre.getLocation().equalsIgnoreCase(loc))) {//checking if the theatre is null or not in the movie's loc
+                    System.out.println("Invalid theatre name ");
+                    continue;
+                }
+                break ;
+            }
+
+
             System.out.println("Available Screens");
             for (String screenName : theatre.getScreenmap().keySet()) {//iterating the screeen hashmap to get the Screen list
                 System.out.println(screenName);
             }
-
-
-            //getting the AvailableScreen of the movie.
-            System.out.println("Enter the name of the Screen :");
-            String scrname = sc.nextLine();
-            Screen screen = theatre.getScreenmap().get(scrname);//getting the screen object from the screen map usnig screen name
-            if (screen == null) {//if screen is full
-                System.out.println("Invalid Screen name !");
-                continue;
+            while (true) {
+                //getting the AvailableScreen of the movie.
+                System.out.println("Enter the name of the Screen :");
+                String scrname = sc.nextLine();
+                //getting the screen object from the screen map usnig screen name
+                screen = theatre.getScreenmap().get(scrname);
+                if (screen == null) {//if screen is full
+                    System.out.println("Invalid Screen name !");
+                    continue ;
+                }
+                break ;
             }
 
             //getting the duration of the movie.
-            int l = 0;
-            while (l < 3) {//loop for 3 times
-                l++;
+            while (true) {//loop for 3 times
                 System.out.println("Enter the Duration of the movie(minutes):");
                 try {
                     //getting the duration
@@ -208,13 +200,9 @@ public class AdminActions {//AdminActions class for admin's actions.
                 } catch (Exception e) {
                     System.out.println("Invalid duration");
                 }
-                if (l==3){
-                    System.out.println("please try later");
-                    break ;
-                }
             }
             Show show = new Show();
-            if(duration !=0) {
+            if(duration != 0) {
                 show = AdminActions.anothershow(date, sc, screen, price, show, duration);//calling the movie adding methos
                 if (show != null) {//if shoe is not null...add it to the screen
                     screen.getShows().add(show);//adding these show instances to the Show.
@@ -228,8 +216,8 @@ public class AdminActions {//AdminActions class for admin's actions.
 //                  AdminActions.anothershow(date, sc,screen,moviename,loc,price,theatre);
                     System.out.println("Movie added successfully !");
                 }
-            boolean repeat = true;
-            while (repeat) {//id want to add same movie as another show .
+                boolean repeat = true;
+                while (repeat) {//id want to add same movie as another show .
                 System.out.println("Do you wnt to add the same movie as another show ? [yes: 1 / no: 0]");
                 int choice = Integer.parseInt(sc.nextLine());
                 if (choice == 1) {
@@ -244,10 +232,13 @@ public class AdminActions {//AdminActions class for admin's actions.
                         BMS.getMovieNameMovieObject().get(moviename).add(currentmovies);//adding the movies details on the respective movie key .
                         System.out.println("Movie was added to another show !");
                     }
-                } else {
+                }
+                else {
                     repeat = false;//reassigning the condition var
                 }
-            }
+                }
+            }else{
+                System.out.println("Please enter the valid duration !");
             }
             break;//breaking the while
         }
@@ -279,45 +270,35 @@ public class AdminActions {//AdminActions class for admin's actions.
     public static Show anothershow(LocalDate date, Scanner sc, Screen screen, int price,Show show,int duration) {//method for adding the show
 
         LocalTime startTime = null;//lcal var for the starttime of the movie
-        int j = 0;
-        y:while (j < 3) {//loop for 3 times
-            j++;
+        while (true) {//loop for 3 times
             System.out.println("Enter the start time of the show (HH:mm)");
-
-            try {
-                //getting the starttime
+            try {//getting the start time
                 startTime = LocalTime.parse(sc.nextLine(), BMS.getTimeFormatter());
-                break y;
+                break ;
             } catch (Exception e) {
                 System.out.println("Invalid time format");
             }
-            if (j == 3) {
-                System.out.println("please try again !");
-                break y;
-            }
         }
-
 
         LocalTime endTime = null;
         //calculating the endtime by adding the break time.
-        if (startTime != null) {
-             endTime= startTime.plusMinutes(duration + 30);
+            endTime= startTime.plusMinutes(duration + 30);
             boolean hitting = false;
             //getting the show instances from the Show.
             for (Show shows : screen.getShows()) {
                 /* if the date is equals to the show's date and
                 current endtime is before existing starttime (1 : 9)false
                 current starttime is after existing endtime (10 : 12)true
-                 enters into body*/
+                enters into body*/
                 if (date.isEqual(shows.getDate()) && !(endTime.isBefore(shows.getStartTime()) || startTime.isAfter(shows.getEndTime()) || startTime.equals(shows.getStartTime()))) {
                     hitting = true;
                     break;
                 }
             }
             //this block for checking all the show timings are matching or not.
-            for (var padam : BMS.getMovieNameMovieObject().keySet()) {
-                for (var thirai : BMS.getMovieNameMovieObject().get(padam)) {
-                    if (thirai.getShow().getStartTime().equals(startTime)) {
+            for (String movie : BMS.getMovieNameMovieObject().keySet()) {
+                for (Movie movieobj : BMS.getMovieNameMovieObject().get(movie)) {
+                    if (movieobj.getShow().getStartTime().equals(startTime)) {
                         hitting = true;
                         break;
                     }
@@ -327,7 +308,6 @@ public class AdminActions {//AdminActions class for admin's actions.
                 System.out.println("Show overlaps with an existing one.");
                 return null;//return null (no show added .
             }
-        }
         HashMap<Character, ArrayList<String>> duplicateseatarrangement = new HashMap<>();//Hashmap duplicateseatarrangement for storing the cody of the seatrrangement.
         for (var entry : screen.getSeatingarrange().entrySet()) {//gets the seatrrangeme value and stores as entry set.
             char key = entry.getKey();//to store the key.
