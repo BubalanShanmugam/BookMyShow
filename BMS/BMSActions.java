@@ -8,7 +8,6 @@ public class BMSActions {//Bookmyshoe Action class
     public static void start() {//start method dfinition
         Scanner sc = new Scanner(System.in);//Scanner object creation .
         BMS.getAdminlist().add(new Admin("a", 1));//setting Default admin credentials.
-//        BMS.getUserlist().add(new User("u", 1,"tpr"));//setting Default user credentials.
         x:while (true) {//while with label.
             //BookMyShow Actions
             System.out.println("BOOK MY SHOW");
@@ -16,7 +15,7 @@ public class BMSActions {//Bookmyshoe Action class
             System.out.print("Enter your choice:");
             int choice = Integer.parseInt(sc.nextLine());
 
-            switch (choice) {
+            switch (choice) {//switch case for admin, user login and exit.
                 case 1:
                     Admin admin = AdminActions.adminlogin(sc); //creating instnce for th Admin class.
                     if (admin == null) { //to check whether the admin object 'admin' is null or not
@@ -37,7 +36,7 @@ public class BMSActions {//Bookmyshoe Action class
                     if (user == null) {//if user object is null.
                         if (!BMS.getUserlist().contains(name)) {//if username is mismatching.
                             System.out.println("No user found");
-                            System.out.println("Do you want to sign up ?[1 / 0]");//to ask for register
+                            System.out.println("Do you want to sign up ?[yes = 1 (or) no = 0]");//to ask for register
                             int ch = Integer.parseInt(sc.nextLine());// yes or no for register
                             if (ch == 1) {//if yes to register
                                 UserActions.register(sc,name);//calling the register method.
@@ -110,16 +109,15 @@ public class BMSActions {//Bookmyshoe Action class
             int userChoice = Integer.parseInt(sc.nextLine());
             switch (userChoice) {//swith case for perform the adminopertions
                 case 2:
-                    // case for calling the method to Chane location or Date.
+                    // case for calling the method to Change location or Date.
                     LocalDate date = UserActions.changeLocationorDate(user, LocalDate.now());
+                    //calling the available movies to display the movies after changing the date and location !
                     UserActions.availableMovies(user,date);
                     break ;
                 case 1:
                     // case for calling the method to view AvailableMovies
                     UserActions.availableMovies(user,LocalDate.now());
                     break ;
-
-
                 case 3:
                     // case for calling the method to view bookedTickets.
                     UserActions.viewTickets(user);

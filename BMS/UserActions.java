@@ -27,7 +27,7 @@ public class UserActions {//USeractions class for the user operations
         //getting the username, pass and the location for the user.
         System.out.print("Enter the new Username [Default "+name+"]:");
         String username = sc.nextLine();
-        if(username.isEmpty()){
+        if(username.isEmpty()){//if the user name input is empty it takes the already entered username.
             username=name;
             System.out.println(username);
         }
@@ -42,27 +42,27 @@ public class UserActions {//USeractions class for the user operations
 //method to print the available movies based on the location.
 public static void availableMovies(User user, LocalDate date) {
     Scanner sc = new Scanner(System.in);//scanner object creation .
-    String movietobook ="";
-    boolean movieisthere ;
+    String movietobook ="";// movie name variable
+    boolean movieisthere ;//for condition purpose
     ArrayList<Movie> movielist = new ArrayList<>();//local movielist to store the list of movies.
     System.out.println("========================");
 
-    LocalDate today = date;//to store the current date.
-    LocalDate selectedDate = today;
+//    LocalDate today = date;//to store the current date.
+    LocalDate selectedDate = date;//for after changing the
 
         while (true) {
             System.out.println("Now available novies in your Location  :" + user.getLocation());//printing the location
             movieisthere = false;//for condition purpose
             for (String moviename : BMS.getMovieNameMovieObject().keySet()) {//getting the movienmeandobj ,and puts in the moviename .
-                boolean movavailable = false;
+                boolean movavailable = false;//for changing the another bool var.
                 for (Movie movie : BMS.getMovieNameMovieObject().get(moviename)) {//iterate the movielist and stores in the movie.
                     if (movie.getLoc().equalsIgnoreCase(user.getLocation()) && selectedDate.equals(movie.getStartDate())) {//checks the location of the movie with the users location and movie starting date with today.
-                        movavailable = true;
+                        movavailable = true;//resassigning as true .
                         movieisthere = true;//resassigning as true .
                         break;
                     }
                 }
-                if (movavailable){
+                if (movavailable){//if movie is available
                     System.out.println("=>" + moviename);//printing the available movie
                 }
             }
@@ -71,33 +71,34 @@ public static void availableMovies(User user, LocalDate date) {
                 System.out.println("No movie Available in your location on currentdate!");
             }
             // if want to change the location or date
-            System.out.println(" Would you like to change the (Location or Date): [yes = 1 | no =0]");
+            System.out.println(" Would you like to change the (Location or Date): [yes = 1 | no = 0]");
             int ch = Integer.parseInt(sc.nextLine());
 
             if (ch == 1) {//if want to change location.
-                LocalDate newDate = changeLocationorDate(user, today);//calling chngelocationordate() method
+                LocalDate newDate = changeLocationorDate(user, date);//calling chngelocationordate() method
                 if (!(newDate == null)) {//if newdate is not null.
                     selectedDate = newDate;//assigning the newdate to date.
                 }
             }
-            else {
+            else {//if choice is 0 or other
                 break;
             }
         }
 
-    while (movieisthere) {
+    while (movieisthere) {//if any movie is there...
+
         //getting movie name to book tickets.
         System.out.println("Enter the movie name to book tickets :");
         try {
             movietobook = sc.nextLine();
-            movieisthere= false;
+            movieisthere= false;//reassigning as false after getting the name(because no need to iterate after getting input)
         } catch (Exception e) {
             System.out.println("Not a valid movie name");
         }
     }
 
-    ArrayList<String> mnlist = new ArrayList<>(BMS.getMovieNameMovieObject().keySet());
-    if (mnlist.contains(movietobook)) {
+    ArrayList<String> movieNameList = new ArrayList<>(BMS.getMovieNameMovieObject().keySet());//movienamelist to hold the name of the movies
+    if (movieNameList.contains(movietobook)) {//if name of the movietobook is available in movienamelist.
         for (var movieobject : BMS.getMovieNameMovieObject().get(movietobook)) {//getting the movieobject from the movie hashmap.
             if (movieobject.getLoc().equalsIgnoreCase(user.getLocation()) && movieobject.getStartDate().isEqual(selectedDate)) {//chaecks the location and the time of the movie is equls to the user's.
                 movielist.add(movieobject);//add the movie object in the movielist.
@@ -113,7 +114,7 @@ public static void availableMovies(User user, LocalDate date) {
 
     public static void bookticket(User user, ArrayList<Movie> movies) {//method for booking tickets
         Scanner sc = new Scanner(System.in);//scanner object creation
-        LocalTime showTime;
+        LocalTime showTime;//var for the time of the show
         String theName;//theatre name var
 
         HashMap<String, HashSet<Show>> ShowonTheatre = new HashMap<>();//hashmap to store the show on the particular theatre.
@@ -138,19 +139,17 @@ public static void availableMovies(User user, LocalDate date) {
                 //getting the theatre name
                 System.out.println("Enter the name of theatre (if want exit enter 0 ):");
                     theName = sc.nextLine();
-                if (!thlist.contains(theName)) {
-                    if (theName.equals("0")) {
+                if (!thlist.contains(theName)) {//if theatrename is not available in theatre list
+                    if (theName.equals("0")) {//if input i "0"
                         System.out.println("Exiting...");
-                        return ;
+                        return;
                     }
                     System.out.println("Theatre is not available");
                     continue;
                     }
-
                 break;
             }
             //getting the key value from the theatre show on theatre
-
             if (thlist.contains(theName)) {//list contains the theatre name
                 //getting the local time.
                 while (true) {
@@ -188,6 +187,7 @@ public static void availableMovies(User user, LocalDate date) {
                         System.out.println(seats.getKey() + " " + seats.getValue());//printing the seat pattern
                     }
                 }
+                //getting the no. of seats to book
                 System.out.println("Enter the no .of seats:");
                 int seatCount = Integer.parseInt(sc.nextLine());
                 int price = nowShow.getPrice() * seatCount;//calculating the total price
@@ -254,8 +254,8 @@ public static void availableMovies(User user, LocalDate date) {
                 }
                 break;
             case 2://case for the changing the date.
-                //getting the date with th perfect date.
 
+                //getting the date with th perfect date.
                 while (true) {
                     System.out.println("Enter your new date");
                     try {

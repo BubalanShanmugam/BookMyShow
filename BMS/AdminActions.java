@@ -53,6 +53,7 @@ public class AdminActions {//AdminActions class for admin's actions.
             while (true) {
                 System.out.print("Enter the name of the screen:");
                 String scrname = sc.nextLine();
+                //if the name of the screen is contains in the screen map(already exist)
                 if (!screenHashMap.containsKey(scrname)) {
                     System.out.print("Enter the no.of seats  :");
                     int noofseats = Integer.parseInt(sc.nextLine());
@@ -64,7 +65,7 @@ public class AdminActions {//AdminActions class for admin's actions.
                     if (grid == null) {//if grid is null
                         continue;//continue from getting screen name
                     }
-                    Screen screen = (new Screen(scrname, noofseats, grid, scrgrid));//creationg new instance for the Screen .
+                    Screen screen = (new Screen(scrname, noofseats, grid, scrgrid));//creating new instance for the Screen .
                     screenHashMap.put(scrname, screen);//adding that new instance in the ScreenHashmap with the screenname key.
                     numofscr--;//decrementing the no of screens
                     if (0 == numofscr) {//if all the screens sre created
@@ -106,8 +107,8 @@ public class AdminActions {//AdminActions class for admin's actions.
         LocalDate date = null;//date var
         int duration =0;//duration var initialization
         int price;//var for the ticket price
-        Screen screen ;
-        Theatre theatre;
+        Screen screen ;//var in Scrren  type
+        Theatre theatre;//var in Theatre type
         x:while (true) {//loop for itertiing.
 
             //getting the movie name and location.
@@ -167,7 +168,7 @@ public class AdminActions {//AdminActions class for admin's actions.
                 theatre = BMS.getTheatrenametheatreobj().get(theatrename);
                 if (theatre == null || !(theatre.getLocation().equalsIgnoreCase(loc))) {//checking if the theatre is null or not in the movie's loc
                     System.out.println("Invalid theatre name ");
-                    continue;
+                    continue;//loops this part .
                 }
                 break ;
             }
@@ -185,7 +186,7 @@ public class AdminActions {//AdminActions class for admin's actions.
                 screen = theatre.getScreenmap().get(scrname);
                 if (screen == null) {//if screen is full
                     System.out.println("Invalid Screen name !");
-                    continue ;
+                    continue ;//loops this part
                 }
                 break ;
             }
@@ -213,7 +214,6 @@ public class AdminActions {//AdminActions class for admin's actions.
                         BMS.getMovieNameMovieObject().put(moviename, new ArrayList<>());//add the movie to the movie hashmap with the moviename key , new arraylist(empty).
                     }
                     BMS.getMovieNameMovieObject().get(moviename).add(currentmovie);//adding the movies details on the respective movie key .
-//                  AdminActions.anothershow(date, sc,screen,moviename,loc,price,theatre);
                     System.out.println("Movie added successfully !");
                 }
                 boolean repeat = true;

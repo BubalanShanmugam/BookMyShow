@@ -22,7 +22,7 @@ public class Utility {//User defined utility class to geenrate the seatarrangeme
                 //using nested for loop the seararrangement was added with seats and spaces!
                 for(int i = 0 ; i < splitscr.length  ; i++){
                     for(int j = 0 ; j <Integer.parseInt(splitscr[i]) ; j++){
-                        r.add("["+ch+j+"]");//seats
+                        r.add("["+"]");//seats
                     }
                     if(i < scrgrid.length() -3){
                         r.add("<===> ");//space
