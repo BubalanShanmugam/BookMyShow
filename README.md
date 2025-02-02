@@ -60,11 +60,11 @@ git clone https://github.com/BubalanShanmugam/BookMyShow.git
 ```
 **step 2: Compile the application:**
 ```bash
-javac Application.java
+javac BMS.java
 ```
 **step 3:  Run the application:**
 ```bash   
-java Application
+java BMS
 ```
 # **Usage Instructions**
 
