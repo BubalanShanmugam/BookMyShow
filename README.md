@@ -1,57 +1,63 @@
-# **BookMyShow - Java Console Application**
+# BookMyShow - Java Console Application
 
-BookMyShow is a terminal-based movie ticket booking system developed in Java. It allows users to browse available movies, select showtimes, and book or cancel tickets. The application now includes a **secure user login system**, ensuring that user credentials are encrypted and protected.
+BookMyShow is a terminal-based movie ticket booking system developed in Java. It allows users to browse available movies, select showtimes, and book or cancel tickets. The application includes a **secure user login system** to protect user credentials.
 
-## **Features**
+---
 
-1. **User Login with High Security**:
-   - Users must log in with their credentials before accessing the movie booking system. Passwords are stored securely using encryption algorithms.
+## Features
 
-2. **View List of Movies**:
+1. **User Login System**:  
+   - Users must log in with their credentials to access the movie booking system. Passwords are stored securely.
+
+2. **View List of Movies**:  
    - Users can browse through a list of movies currently showing in theaters.
 
-3. **Book Tickets**:
+3. **Book Tickets**:  
    - After logging in, users can select a movie and showtime to book tickets.
 
-4. **Cancel Bookings**:
-   - Users can view their booked tickets and cancel them if necessary.
+4. **Cancel Bookings**:  
+   - Users can view their booked tickets and cancel them if needed.
 
-5. **Manage User Data**:
+5. **Manage User Data**:  
    - The application stores user login information securely and manages bookings and cancellations efficiently.
 
-6. **Show Available Showtimes**:
+6. **Show Available Showtimes**:  
    - For each movie, users can see the available time slots before making a booking.
 
-7. **User-friendly Command-line Interface**:
+7. **User-friendly Command-line Interface**:  
    - The application provides an easy-to-navigate terminal interface for users, guiding them throughout the booking process.
 
-## **Technologies Used**
+---
 
-1. **Java**:
+## Technologies Used
+
+1. **Java**:  
    - The primary programming language used to build this application.
 
-2. **Object-Oriented Programming (OOP) Principles**:
-   - **Encapsulation**: Internal data is protected and can only be modified through controlled methods.
-   - **Inheritance**: Class hierarchies share common functionalities to avoid code duplication.
+2. **Object-Oriented Programming (OOP) Principles**:  
+   - **Encapsulation**: Internal data is protected and can only be modified through controlled methods.  
+   - **Inheritance**: Class hierarchies share common functionalities to avoid code duplication.  
    - **Polymorphism**: Enables dynamic decision-making within the application, making it more flexible and modular.
 
-3. **Collections Framework**:
+3. **Collections Framework**:  
    - Manages lists of movies, showtimes, and bookings for efficient access and modification.
 
-4. **File I/O**:
+4. **File I/O**:  
    - Used for reading and writing user data and booking details to files. The data persists across sessions.
 
-5. **Encryption**:
-   - Implements encryption for storing passwords securely. The system uses advanced encryption standards to ensure that user passwords are never stored in plain text.
+5. **Security**:  
+   - Passwords are stored securely using advanced security standards to ensure they are never stored in plain text.
 
-6. **Exception Handling**:
+6. **Exception Handling**:  
    - Gracefully handles errors such as invalid inputs, incorrect logins, or issues with data persistence.
 
-## **Installation**
+---
+
+## Installation
 
 To get started with this project, follow these steps:
 
-### **Step 1: Clone the Repository**
+### Step 1: Clone the Repository
 
 Clone the GitHub repository to your local machine using the following command:
 
