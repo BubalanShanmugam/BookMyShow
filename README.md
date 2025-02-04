@@ -102,14 +102,6 @@ java BMS
 ### **Data Persistence**:
 - Your bookings and cancellations, along with your login credentials, are stored and automatically loaded during future sessions.
 
-## **Security Features**
-
-1. **Secure Login**:
-   - During login, the entered password is hashed and compared to the stored encrypted password. Only the correct hash will allow the user to log in successfully.
-
-2. **User Session Management**:
-   - User sessions are securely managed, and you will remain logged in until you explicitly log out or close the program.
-
 ## **Contact**
 
 For any queries or feedback, contact to:
