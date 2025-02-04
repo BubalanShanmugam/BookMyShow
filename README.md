@@ -3,17 +3,19 @@
 BookMyShow is a terminal-based movie ticket booking system developed in Java. It allows users to browse available movies, select showtimes, and book or cancel tickets. The application includes a **secure user login system** to protect user credentials.
 
 ---
-**Class Diagram**
+
+## **Class Diagram**
 
 <img width="351" alt="Screenshot 2025-01-28 205427" src="https://github.com/user-attachments/assets/aeca5f5a-77df-445f-a8b5-499ce1cb4e92" />
 
-**Execution Video**
+## **Execution Video**
 
 https://github.com/user-attachments/assets/39c1c211-623c-47a0-b28b-7017d6184395
 
 
 ## Features
 
+## **User**
 1. **User Login System**:  
    - Users must log in with their credentials to access the movie booking system. Passwords are stored securely.
 
@@ -30,10 +32,14 @@ https://github.com/user-attachments/assets/39c1c211-623c-47a0-b28b-7017d6184395
    - The application stores user login information securely and manages bookings and cancellations efficiently.
 
 6. **Show Available Showtimes**:  
-   - For each movie, users can see the available time slots before making a booking.
+   - For each movie, users can see the available time slots and available seats before making a ticket booking.
 
-7. **User-friendly Command-line Interface**:  
-   - The application provides an easy-to-navigate terminal interface for users, guiding them throughout the booking process.
+
+## **Admin**
+
+- Add, update users,Theatres, movies and shows.
+
+- View booking statistics.
 
 ---
 
@@ -50,14 +56,15 @@ https://github.com/user-attachments/assets/39c1c211-623c-47a0-b28b-7017d6184395
 3. **Collections Framework**:  
    - Manages lists of movies, showtimes, and bookings for efficient access and modification.
 
-4. **File I/O**:  
-   - Used for reading and writing user data and booking details to files. The data persists across sessions.
-
-5. **Security**:  
-   - Passwords are stored securely using advanced security standards to ensure they are never stored in plain text.
-
-6. **Exception Handling**:  
+4. **Exception Handling**:  
    - Gracefully handles errors such as invalid inputs, incorrect logins, or issues with data persistence.
+---
+
+## **Prerequisites**
+
+- Java JDK 11 or later
+- Text Editor or IDE (e.g., IntelliJ IDEA, Eclipse)
+- Git
 
 ---
 
@@ -80,10 +87,11 @@ javac BMS.java
 ```bash   
 java BMS
 ```
+
 # **Usage Instructions**
 
 ### **User Registration**:
-- On first use, users will be prompted to create a new account. Choose a secure password, which will be encrypted before being stored. The application uses AES (Advanced Encryption Standard) for password encryption to ensure high-level security.
+- On first use, users will be prompted to create a new account. Choose a secure password.
 
 ### **Login**:
 - Enter your username and password to access the system. If the credentials are correct, you will be granted access to the movie booking system.
@@ -92,17 +100,14 @@ java BMS
 - Once logged in, you can select a movie and showtime, then proceed to book or cancel tickets. All changes are saved to your user profile.
 
 ### **Data Persistence**:
-- Your bookings and cancellations, along with your login credentials (encrypted), are stored and automatically loaded during future sessions.
+- Your bookings and cancellations, along with your login credentials, are stored and automatically loaded during future sessions.
 
 ## **Security Features**
 
-1. **Password Encryption**:
-   - The application uses AES encryption to securely store user passwords. Even if someone gains access to the database or files, they will not be able to retrieve your password in plain text.
-
-2. **Secure Login**:
+1. **Secure Login**:
    - During login, the entered password is hashed and compared to the stored encrypted password. Only the correct hash will allow the user to log in successfully.
 
-3. **User Session Management**:
+2. **User Session Management**:
    - User sessions are securely managed, and you will remain logged in until you explicitly log out or close the program.
 
 ## **Contact**
