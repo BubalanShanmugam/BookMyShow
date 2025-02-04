@@ -49,7 +49,7 @@ https://github.com/user-attachments/assets/39c1c211-623c-47a0-b28b-7017d6184395
    - The primary programming language used to build this application.
 
 2. **Object-Oriented Programming (OOP) Principles**:  
-   - **Encapsulation**: Internal data is protected and can only be modified through controlled methods.  
+   - **Encapsulation**: Internal data is protected and can only be modified through controlled methods.(provides security) 
    - **Inheritance**: Class hierarchies share common functionalities to avoid code duplication.  
    - **Polymorphism**: Enables dynamic decision-making within the application, making it more flexible and modular.
 
