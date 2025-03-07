@@ -12,6 +12,7 @@ public class Movie {//movie pojo class
 
     //construction to initialize the moviename, location,duration,startdate,theatre,screen,show .
     public Movie(String movieName, String loc, LocalDate startDate,Theatre theatre,Screen screen,Show show){
+        //super();[implicitly calling the constructor of object class]
         this.movieName=movieName;
         this.loc=loc;
         this.startDate=startDate;

@@ -3,7 +3,9 @@ package BMS;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Utility {//User defined utility class to geenrate the seatarrangement .
+public class Utility implements UtilitiesInterface
+{
+    //User defined utility class to geenrate the seatarrangement .
     public static HashMap<Character, ArrayList<String>> generateSeatingPatterns(int noofseats, String scrgrid){//method to generate  seat arrangement.
         int count =noofseats;//assigning coofcount to the var (count)
         String[] splitscr= scrgrid.split("\\*");//spliting the gris value and put it iin string array[].

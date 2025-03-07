@@ -9,6 +9,7 @@ public class Theatre {//Theatre pojo class
 
     //Theatre constructor to initialize the theatre name,location,sceenmap(Screen hashmap) .
     public Theatre (String name,HashMap<String,Screen> screenmap,String location){
+        //super();[implicitly calling the constructor of object class]
         this.name=name;
         this.location=location;
         this.screenmap=screenmap;

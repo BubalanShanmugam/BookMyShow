@@ -19,6 +19,7 @@ public class Show {//Show pojo class
     //Show Constructor to set the startTiime,endTime,date,screen,price,seatarr.
      public Show(LocalTime startTime, LocalTime endTime, LocalDate date,Screen screen, int price,HashMap<Character,ArrayList<String>> seatarr,int duration)
      {
+         //super();[implicitly calling the constructor of object class]
          this.startTime=startTime;
          this.endTime=endTime;
          this.date=date;
@@ -29,7 +30,7 @@ public class Show {//Show pojo class
      }
 
     public Show() {
-
+        //super();[implicitly calling the constructor of object class]
     }
 
     //gettors for the startTiime,endTime,date,screen,price,seatarr

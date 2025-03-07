@@ -37,6 +37,7 @@ public class Tickets {//class for the movie Tickets/
 
     //Constructor for the Tickets class to initialize the theatrename, movienmae, screenname,location,starttime,bookedtickets,price.
     public Tickets(String theatreName, String movieName, String screenname, String location, LocalTime startTime, ArrayList<String> bookedTicket, int price) {
+        //super();[implicitly calling the constructor of object class]
         this.theatreName= theatreName ;
         this.movieName=movieName;
         this.screenname= screenname;

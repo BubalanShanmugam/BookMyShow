@@ -14,6 +14,7 @@ public class Screen {//Screen pojo class
 
     //constructor to the Screen class to instialize the screenname,noofseats,seatarrangement and grid.
     public Screen(String screenname,int nofseats,HashMap<Character,ArrayList<String>> seatingarrange, String grid) {
+        //super();[implicitly calling the constructor of object class]
         this.screenname = screenname;
         this.nofseats = nofseats;
         this.availableseat = nofseats;
