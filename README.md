@@ -8,6 +8,10 @@ BookMyShow is a terminal-based movie ticket booking system developed in Java. It
 
 <img width="351" alt="Screenshot 2025-01-28 205427" src="https://github.com/user-attachments/assets/aeca5f5a-77df-445f-a8b5-499ce1cb4e92" />
 
+## **Execution Video**
+
+https://github.com/user-attachments/assets/10850b08-20cc-405c-bf81-24c3b63be3a0
+
 
 ## Features
 
